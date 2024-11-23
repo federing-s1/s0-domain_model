@@ -1,0 +1,36 @@
+digraph {
+    graph [bgcolor="#2B2B2B", fontcolor=white];
+
+    // Set node attributes
+    node [shape=record, style=filled, fillcolor="#404040", fontcolor=white];
+    edge [color=white];
+
+    subgraph cluster_database {
+        label = "Database";
+        style = "rounded";
+
+        Transactions;
+        Fills;
+        Balances;
+        Prices;
+    }
+
+    subgraph cluster_gf {
+      label = "Grafana";
+      style = "rounded";
+
+      Holding;
+      PNL;
+      Margin;
+      Ping;
+    }
+
+    // Connections
+    // Transactions;
+    Fills -> PNL;
+    Balances -> Holding;
+    Prices -> PNL;
+    Prices -> Margin;
+
+
+}
